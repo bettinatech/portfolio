@@ -49,7 +49,7 @@
 @media(min-width:721px){
  #bettina-portfolio{--desktop-book-width:670px;--desktop-book-height:450px;--book-scale:clamp(1,calc((18.77vw + 413.6px) / 670px),1.155)}
  #bettina-portfolio .bp-stage-shell{width:calc(670px * var(--book-scale));height:calc(450px * var(--book-scale));margin:0 auto;position:relative;z-index:2}
- #bettina-portfolio .bp-stage-shell>.bp-stage{width:670px;margin:0;transform:scale(var(--book-scale));transform-origin:top left}
+ #bettina-portfolio .bp-stage-shell>.bp-stage{width:670px;margin:0;transform:none;zoom:var(--book-scale)}
  #bettina-portfolio #bp-welcome{inset:0 auto auto -100%;width:100%;height:450px;transform:none;backface-visibility:visible;z-index:6}
  #bettina-portfolio #bp-welcome>.bp-welcome-content{display:contents}
  #bettina-portfolio #bp-welcome .bp-welcome-next{display:none}
@@ -64,7 +64,6 @@
 #bettina-portfolio .bp-panel{padding:31px 29px 23px;min-height:100%;display:flex;flex-direction:column}
 #bettina-portfolio .bp-paper{font-family:Arial,sans-serif}
 #bettina-portfolio .bp-paper h2,#bettina-portfolio .bp-paper h3,#bettina-portfolio .bp-paper .bp-invitation{font-family:Arial,sans-serif;font-weight:600}
-#bettina-portfolio .bp-mobile-welcome{display:none}
 #bettina-portfolio .bp-panel h2,#bettina-portfolio .bp-back h2,#bettina-portfolio .bp-viewer h2{font-family:Georgia,serif;font-weight:400;font-size:31px;line-height:1.17;letter-spacing:-.8px;margin:24px 0 17px}
 #bettina-portfolio .bp-panel p{font-size:13px;line-height:1.7;margin:0 0 15px;color:#536668}
 #bettina-portfolio .bp-panel .bp-invitation{font-family:Arial,sans-serif;font-size:14px;font-style:normal;color:#587167;border-top:1px solid #dce0d3;padding-top:16px;margin-top:1px}
@@ -209,7 +208,6 @@
 #bettina-portfolio .bp-cosmos .bp-petal{width:18px;height:31px;left:24px;top:2px;transform-origin:9px 30px;transform:rotate(calc(var(--petal)*45deg));border-radius:60% 60% 22% 22%;border:0;background:linear-gradient(90deg,#b67e9b,#ead0d5 55%,#be8da6);box-shadow:inset 1px 0 #f3dfdf88}
 #bettina-portfolio .bp-cosmos .bp-bloom::after{left:27px;top:27px;width:12px;height:12px}
 @media(max-width:720px){#bettina-portfolio{padding:22px 18px 12px}#bettina-portfolio .bp-edition{display:none}#bettina-portfolio .bp-header{justify-content:flex-end}#bettina-portfolio h1{font-size:35px}#bettina-portfolio .bp-stage{max-width:320px;height:470px}#bettina-portfolio .bp-book{width:91%;left:4.5%;transform:none}#bettina-portfolio.bp-opened .bp-book{left:0;width:100%;transform:none}#bettina-portfolio.bp-opened .bp-cover{transform:rotateY(-110deg);visibility:hidden;pointer-events:none;transition:transform 1.05s,visibility 0s 1.05s}#bettina-portfolio .bp-cover>.bp-back{display:none}#bettina-portfolio .bp-front{padding:30px 25px 25px 32px}#bettina-portfolio .bp-cover-title h2{font-size:57px}#bettina-portfolio .bp-panel{padding:26px 23px 20px}#bettina-portfolio .bp-plant:nth-child(n+3){display:none}#bettina-portfolio .bp-plant:nth-child(1){left:-48px;bottom:10%;opacity:.7}#bettina-portfolio .bp-plant:nth-child(2){right:-43px;bottom:18%;opacity:.6}#bettina-portfolio .bp-tabs button{padding:10px 18px}#bettina-portfolio.bp-project-mode .bp-stage{max-width:100%}#bettina-portfolio .bp-project-top{align-items:flex-start}#bettina-portfolio .bp-project-type{display:none}#bettina-portfolio .bp-project-bottom{display:block}#bettina-portfolio .bp-preview-label{display:block;margin-top:10px}#bettina-portfolio .bp-viewer{padding:12px}#bettina-portfolio .bp-viewer-top{align-items:flex-start}#bettina-portfolio .bp-viewer h2{font-size:21px}#bettina-portfolio footer{font-size:9px;letter-spacing:0}#bettina-portfolio .bp-image-window{aspect-ratio:1}#bettina-portfolio .bp-image-window img{object-fit:contain}}
-#bettina-portfolio .bp-mobile-welcome{display:none}
 #bettina-portfolio .bp-mobile-hu{font-size:11px;line-height:1.55;color:#536668;margin:0}
 #bettina-portfolio .bp-mobile-arrow{position:absolute;right:-5px;bottom:-2px;color:#c3a25a;font-size:28px;line-height:1;animation:bp-arrow-blink 1.6s ease-in-out infinite;pointer-events:none}
 @media(max-width:720px){#bettina-portfolio.bp-opened .bp-stage{height:auto;min-height:0;max-height:none}#bettina-portfolio.bp-opened .bp-book{height:auto;max-height:none}#bettina-portfolio.bp-opened .bp-paper{height:auto;min-height:0}#bettina-portfolio .bp-mobile-welcome{display:block;border-bottom:1px solid #dce0d3;padding-bottom:6px;margin-bottom:0}#bettina-portfolio .bp-mobile-welcome h2{font-size:16px;line-height:1.2;white-space:nowrap;margin:8px 0 9px}#bettina-portfolio .bp-mobile-welcome h3{font-size:16px;line-height:1.2;white-space:nowrap;margin:10px 0 8px;font-weight:600}#bettina-portfolio .bp-mobile-welcome p{font-size:10px;line-height:1.35;margin:0 0 7px;color:#536668}#bettina-portfolio .bp-mobile-welcome .bp-kicker{font-size:9px}#bettina-portfolio .bp-mobile-welcome .bp-gold-divider{margin:7px 0 8px}#bettina-portfolio .bp-plant:nth-child(1){left:-31px}#bettina-portfolio .bp-plant:nth-child(2){right:-29px}#bettina-portfolio .bp-welcome h2,#bettina-portfolio .bp-hu-copy h3{font-size:16px;line-height:1.17}#bettina-portfolio .bp-welcome p{font-size:10.5px;line-height:1.48}#bettina-portfolio .bp-next-arrow{right:-15px;font-size:32px}#bettina-portfolio .bp-panel{position:relative;min-height:0;padding-bottom:10px}}
@@ -490,7 +488,7 @@
 @media(max-width:720px){#bettina-portfolio .bp-falling-petal{width:10px;height:14px}}
 
 /* Brief feather settling, separated from the bird's occasional head movement. */
-#bettina-portfolio .bp-bird-feathers{position:absolute;inset:0;background-image:var(--reference-art);background-size:100% 100%;pointer-events:none;mask-image:none;clip-path:polygon(12.55% 11.35%,13.05% 11.9%,12.35% 13.2%,10.9% 14.5%,9.1% 15.15%,8.65% 14.85%,9.5% 13.55%,10.55% 12.45%,11.55% 11.65%);transform-origin:12.55% 11.8%;animation:bp-wing-adjust 12s ease-in-out -7s infinite}
+#bettina-portfolio .bp-bird-feathers{position:absolute;inset:0;background-image:var(--reference-art);background-size:100% 100%;pointer-events:none;mask-image:none;clip-path:polygon(12.55% 11.35%,13.05% 11.9%,12.35% 13.2%,10.9% 14.5%,9.1% 15.15%,8.65% 14.85%,9.5% 13.55%,10.55% 12.45%,11.55% 11.65%);transform-origin:12.55% 11.8%;animation:none}
 @keyframes bp-feather-settle{0%,72%,82%,100%{transform:rotate(0)}73.5%{transform:rotate(-2.4deg)}75%{transform:rotate(1.7deg)}76%{transform:rotate(-1.3deg)}77.5%{transform:rotate(.9deg)}79%{transform:rotate(-.3deg)}}
 #bettina-portfolio.bp-paused .bp-bird-feathers{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){#bettina-portfolio .bp-bird-feathers{animation:none!important}}
@@ -499,10 +497,11 @@
  #bettina-portfolio .bp-reference-corner,
  #bettina-portfolio .bp-bird-look,
  #bettina-portfolio .bp-bird-feathers{width:clamp(700px,50vw,1000px);height:calc(clamp(700px,50vw,1000px) * .75);aspect-ratio:1448 / 1086;background-size:100% 100%;background-position:0 0;background-repeat:no-repeat}
- #bettina-portfolio .bp-reference-lower{width:clamp(680px,47vw,940px);height:calc(clamp(680px,47vw,940px) * .75)}
+ #bettina-portfolio .bp-reference-upper{mask-image:radial-gradient(ellipse 62% 74% at 0 0,#000 64%,transparent 100%)}
+ #bettina-portfolio .bp-reference-lower{width:clamp(680px,47vw,940px);height:calc(clamp(680px,47vw,940px) * .75);mask-image:radial-gradient(ellipse 58% 68% at 100% 100%,#000 62%,transparent 100%)}
  #bettina-portfolio .bp-reference-upper,#bettina-portfolio .bp-bird-look,#bettina-portfolio .bp-bird-feathers{inset:auto;left:0;top:0}
 }
-@keyframes bp-wing-adjust{0%,65%,88%,100%{transform:rotate(0)}70%{transform:rotate(10deg)}75%{transform:rotate(-3deg)}79%{transform:rotate(6deg)}84%{transform:rotate(-1deg)}}
+
 
 /* Projects: independent proportionally sized previews. */
 #bettina-portfolio.bp-project-mode #bp-projects .bp-dashboard{display:flex;flex-direction:column;align-items:flex-start;gap:10px;width:100%;height:auto!important;min-height:0;max-height:none!important;padding:0;border:0;background:transparent;overflow:visible}
@@ -711,77 +710,40 @@ function select(section, focus=false) {
   }
   desktopTurning = true;
   const forward = ['about','projects','hr','projects2','courses'].indexOf(section) > ['about','projects','hr','projects2','courses'].indexOf(current);
-  const oldRect = {width:stage.offsetWidth,height:stage.offsetHeight};
-  const openingTransition = getComputedStyle(q('.bp-cover')).transition;
-  const openingPerspective = getComputedStyle(stage).perspective;
+  // Capture only the leaving content. The destination is always the live DOM.
   const oldSnapshot = desktopSnapshot();
-  const savedHeight = stage.style.height;
-  const savedTransition = stage.style.transition;
-  const book = q('.bp-book');
-  const cover = q('.bp-cover');
-  const savedBookTransition = book.style.transition;
-  const savedCoverTransition = cover.style.transition;
-  // Capture the destination only at its final width, never mid-transition.
-  // A mid-transition width freezes incorrectly wrapped text into the turning face.
-  book.style.transition = 'none';
-  cover.style.transition = 'none';
-  stage.style.transition = 'none';
-  stage.style.height = oldRect.height + 'px';
+  const book = q('.bp-book'), cover = q('.bp-cover');
+  const saved = [stage.style.transition, book.style.transition, cover.style.transition];
+  stage.style.transition = book.style.transition = cover.style.transition = 'none';
   applySection(section,focus);
   if(root.alignLanguageRows)root.alignLanguageRows();
   book.getBoundingClientRect();
-  const rect = {width:stage.offsetWidth,height:stage.offsetHeight};
-  const rootRect = root.getBoundingClientRect();
-  const destination = desktopSnapshot();
   const layer = document.createElement('div');
   layer.className = 'bp-desktop-turn';
   layer.inert = true;
   layer.setAttribute('aria-hidden','true');
-  Object.assign(layer.style,{position:'absolute',left:'0',top:'0',width:rect.width+'px',height:rect.height+'px',perspective:openingPerspective,zIndex:'10',pointerEvents:'none'});
-  function face(snapshot, half, reverse=false) {
-    const face = document.createElement('div');
-    Object.assign(face.style,{position:'absolute',inset:'0',overflow:'hidden',backfaceVisibility:'hidden',background:'#fcf9f0',transform:reverse?'rotateY(180deg)':'rotateY(0deg)'});
-    const copy = snapshot.cloneNode(true);
-    copy.style.left = half === 'right' ? -(rect.width/2)+'px' : '0';
-    // Isolate the frozen face from the destination page's live CSS cascade.
-    const host=document.createElement('div');
-    Object.assign(host.style,{position:'absolute',inset:'0'});
-    const shadow=host.attachShadow({mode:'open'});const frozenStyle=document.createElement('style');frozenStyle.textContent='*::before,*::after{content:none!important;animation:none!important}';shadow.append(frozenStyle,copy);
-    face.append(host);
-    return face;
-  }
-  const stationary = document.createElement('div');
-  Object.assign(stationary.style,{position:'absolute',left:forward?'0':'50%',top:'0',width:'50%',height:'100%',overflow:'hidden'});
-  stationary.append(face(oldSnapshot,forward?'left':'right'));
+  Object.assign(layer.style,{position:'absolute',inset:'0',perspective:getComputedStyle(stage).perspective,zIndex:'10',pointerEvents:'none'});
   const sheet = document.createElement('div');
-  Object.assign(sheet.style,{position:'absolute',left:forward?'50%':'0',top:'0',width:'50%',height:'100%',transformStyle:'preserve-3d',transformOrigin:forward?'left center':'right center'});
-  const frontFace = face(oldSnapshot,forward?'right':'left');
-  const backFace = face(destination,forward?'left':'right',true);
-  sheet.append(frontFace,backFace);
-  layer.append(stationary,sheet);
+  Object.assign(sheet.style,{position:'absolute',left:forward?'50%':'0',top:'0',width:'50%',height:'100%',overflow:'hidden',backfaceVisibility:'hidden',transformOrigin:forward?'left center':'right center',background:'#fcf9f0',boxShadow:'4px 8px 22px #17334b22'});
+  oldSnapshot.style.left = forward ? -(stage.offsetWidth/2)+'px' : '0';
+  // Keep the old leaf's frozen styles isolated from the new section's cascade.
+  const shadow=sheet.attachShadow({mode:'open'});
+  const frozenStyle=document.createElement('style');
+  frozenStyle.textContent='*::before,*::after{content:none!important;animation:none!important}';
+  shadow.append(frozenStyle,oldSnapshot);
+  layer.append(sheet);
   stage.append(layer);
-  layer.querySelectorAll('div').forEach(host=>{if(host.shadowRoot)host.shadowRoot.querySelectorAll('[data-turn-scroll]').forEach(el=>{el.scrollTop=Number(el.dataset.turnScroll);el.removeAttribute('data-turn-scroll');});});
-  const direction = forward ? -1 : 1;
-  // Use the cover's own CSS transition and perspective for the paper turn.
-  sheet.style.transform = 'rotateY(0deg)';
-  sheet.style.willChange='transform';
-  sheet.style.boxShadow = '4px 8px 22px #17334b22';
-  let finished = false;
-  const fallback = setTimeout(cleanup,1000);
+  shadow.querySelectorAll('[data-turn-scroll]').forEach(el=>{el.scrollTop=Number(el.dataset.turnScroll);el.removeAttribute('data-turn-scroll');});
+  let finished=false;
+  const fallback=setTimeout(cleanup,650);
   cancelDesktopTurn=cleanup;
   function cleanup(){
     if(finished)return;
-    finished=true;
-    clearTimeout(fallback);
-    layer.remove();
-    stage.style.height=savedHeight;
-    stage.style.transition=savedTransition;
-    book.style.transition=savedBookTransition;
-    cover.style.transition=savedCoverTransition;
+    finished=true;clearTimeout(fallback);layer.remove();
+    [stage.style.transition,book.style.transition,cover.style.transition]=saved;
     desktopTurning=false;cancelDesktopTurn=null;
   }
-  // One compositor animation; no dimensions or DOM updates during the turn.
-  const turn=sheet.animate([{transform:'rotateY(0deg)'},{transform:'rotateY('+direction*180+'deg)'}],{duration:650,easing:'cubic-bezier(.22,.7,.2,1)',fill:'forwards'});
+  const turn=sheet.animate([{transform:'rotateY(0deg)'},{transform:'rotateY('+(forward?-180:180)+'deg)'}],{duration:480,easing:'cubic-bezier(.35,.05,.2,1)',fill:'forwards'});
   turn.finished.then(cleanup,cleanup);
 
 }
