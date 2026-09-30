@@ -1,0 +1,18 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const assert = require('node:assert/strict');
+const root = path.resolve(__dirname, '..');
+const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+assert.match(html, /<!doctype html>/i);
+const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)];
+scripts.forEach((m, i) => new vm.Script(m[1], {filename:`inline-script-${i + 1}.js`}));
+const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
+assert.equal(ids.length, new Set(ids).size, 'Duplicate HTML IDs');
+for (const id of ['bp-about','bp-projects','bp-hr','bp-courses','bp-projects2']) assert.ok(ids.includes(id), `Missing ${id}`);
+assert.match(html, /2012 Sales Dashboard/);
+assert.match(html, /Revenue &amp; Target Dashboard/);
+assert.doesNotMatch(html, /(?:file:\/\/|[A-Z]:[\\/](?:Users|Windows)|127\.0\.0\.1|localhost)/i, 'Local-only reference in website');
+assert.doesNotMatch(html.replace(/data:image\/[^;]+;base64,[A-Za-z0-9+/=]+/g, '[embedded image]'), /(?:-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9_-]{24,}|(?:password|pwd|api_key|client_secret)\s*[:=]\s*["'][^"']+["'])/i, 'Potential secret');
+console.log(`PASS: ${scripts.length} inline scripts parse; ${ids.length} unique IDs; required pages and project titles present; no local website references or common secret patterns.`);
+console.log('Static site: index.html is the editable source and GitHub Pages entry point. No generated build directory is required.');
