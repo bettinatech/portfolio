@@ -501,9 +501,9 @@
 @media(min-width:721px){
  #bettina-portfolio .bp-reference-corner,
  #bettina-portfolio .bp-bird-look,
- #bettina-portfolio .bp-bird-feathers{width:clamp(700px,58vw,1180px);height:calc(clamp(700px,58vw,1180px) * .75);aspect-ratio:1448 / 1086;background-size:100% 100%;background-position:0 0;background-repeat:no-repeat}
- #bettina-portfolio .bp-reference-upper{mask-image:radial-gradient(ellipse 72% 84% at 0 0,#000 72%,transparent 100%)}
- #bettina-portfolio .bp-reference-lower{width:clamp(680px,54vw,1100px);height:calc(clamp(680px,54vw,1100px) * .75);mask-image:radial-gradient(ellipse 68% 78% at 100% 100%,#000 70%,transparent 100%)}
+ #bettina-portfolio .bp-bird-feathers{width:clamp(780px,71.5vw,1380px);height:calc(clamp(700px,58vw,1180px) * .75);aspect-ratio:1448 / 1086;background-size:100% 100%;background-position:0 0;background-repeat:no-repeat}
+ #bettina-portfolio .bp-reference-upper{mask-image:radial-gradient(ellipse 78% 88% at 0 0,#000 76%,transparent 100%)}
+ #bettina-portfolio .bp-reference-lower{width:clamp(760px,68vw,1320px);height:calc(clamp(680px,54vw,1100px) * .75);mask-image:radial-gradient(ellipse 74% 84% at 100% 100%,#000 74%,transparent 100%)}
  #bettina-portfolio .bp-reference-upper,#bettina-portfolio .bp-bird-look,#bettina-portfolio .bp-bird-feathers{inset:auto;left:0;top:0}
 }
 
@@ -1162,6 +1162,12 @@ structure();desktop.addEventListener('change',structure);})();
 
 <style id="bp-mobile-fixed-leaves">
 @media(max-width:720px){
+ /* Mobile reading content must not share a 3D plane with the cover. */
+ #bettina-portfolio .bp-stage{perspective:none}
+ #bettina-portfolio .bp-stage>.bp-book{transform-style:flat;transform:none;will-change:auto}
+ #bettina-portfolio .bp-paper{position:relative;z-index:1;transform:none;transform-style:flat;backface-visibility:visible;-webkit-backface-visibility:visible}
+ #bettina-portfolio .bp-cover{transform:none;transform-style:flat;transition:opacity .35s ease;opacity:1;visibility:visible}
+ #bettina-portfolio.bp-opened .bp-cover{transform:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease}
  #bettina-portfolio #bp-welcome:not([hidden]){display:block;position:relative;inset:auto;visibility:visible;opacity:1;transform-style:flat;transform:none;background:transparent;box-shadow:none;border-radius:0;backface-visibility:visible}
  #bettina-portfolio #bp-welcome>.bp-welcome-content{display:block;height:100%;box-sizing:border-box;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y}
  #bettina-portfolio #bp-welcome .bp-welcome-next{position:absolute;right:23px;bottom:20px;width:44px;height:30px;min-height:30px;padding:5px 4px;border:1px solid #29485b;border-radius:6px;background:#17384b;color:#f4eddb;font:500 10px/20px Arial,sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer}
