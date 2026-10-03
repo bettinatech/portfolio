@@ -871,6 +871,7 @@ if(globalThis.Tweak){const state={blossom:'#d78c83'};const tweak=new Tweak({cont
  const root=document.getElementById('bettina-portfolio'),garden=root.querySelector('.bp-garden');
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),fine=matchMedia('(hover:hover) and (pointer:fine)');
  const depth=document.createElement('div');depth.className='bp-atmosphere-depth';depth.setAttribute('aria-hidden','true');garden.prepend(depth);
+ const light=document.createElement('div');light.className='bp-canopy-light';light.setAttribute('aria-hidden','true');for(let i=0;i<3;i++)light.append(document.createElement('span'));garden.append(light);
  const foreground=document.createElement('div');foreground.className='bp-atmosphere-foreground';
  garden.querySelectorAll('.bp-reference-corner').forEach(corner=>foreground.append(corner));garden.append(foreground);
  const pollen=document.createElement('div');pollen.className='bp-pollen';pollen.setAttribute('aria-hidden','true');
@@ -934,15 +935,27 @@ structure();desktop.addEventListener('change',structure);})();
 </style>
 
 <style id="bp-local-foliage-motion">
-#bettina-portfolio .bp-reference-corner{animation:none!important;transform:none!important;filter:none}
-@media(max-width:720px){#bettina-portfolio .bp-reference-corner{filter:url(#bp-local-foliage)}}
+/* Foliage-filtered sunlight: three feathered fans, beneath the plants and book. */
+#bettina-portfolio .bp-canopy-light{position:absolute;left:0;top:0;width:min(1080px,72vw);height:min(820px,92vh);pointer-events:none;isolation:isolate;mask-image:linear-gradient(130deg,#000 0%,#000e 17%,#0007 42%,transparent 74%);overflow:hidden}
+#bettina-portfolio .bp-canopy-light>span{position:absolute;inset:-3%;transform-origin:4% 0%;background:conic-gradient(from 0deg at 4% 0%,transparent 111deg,rgba(245,225,182,.08) 116deg,rgba(245,225,182,.48) 126deg,rgba(245,225,182,.12) 134deg,transparent 141deg);opacity:.34;animation:bp-light-gap-a 23s ease-in-out -7s infinite alternate}
+#bettina-portfolio .bp-canopy-light>span:nth-child(2){background:conic-gradient(from 0deg at 1% 2%,transparent 132deg,rgba(250,237,204,.1) 137deg,rgba(250,237,204,.7) 146deg,rgba(250,237,204,.12) 152deg,transparent 159deg);opacity:.29;animation:bp-light-gap-b 31s ease-in-out -19s infinite alternate}
+#bettina-portfolio .bp-canopy-light>span:nth-child(3){background:conic-gradient(from 0deg at 7% 0%,transparent 99deg,rgba(240,218,175,.08) 104deg,rgba(240,218,175,.36) 112deg,rgba(240,218,175,.08) 120deg,transparent 127deg);opacity:.25;animation:bp-light-gap-c 19s ease-in-out -11s infinite alternate}
+#bettina-portfolio .bp-canopy-light::after{content:"";position:absolute;left:2%;top:3%;width:59%;height:58%;background:radial-gradient(ellipse 13% 21% at 18% 23%,#8e987b25,transparent 100%),radial-gradient(ellipse 21% 13% at 53% 30%,#9a997323,transparent 100%),radial-gradient(ellipse 16% 25% at 38% 64%,#8e987b1c,transparent 100%),radial-gradient(ellipse 22% 11% at 79% 51%,#9a99731c,transparent 100%);opacity:.32;mix-blend-mode:multiply;animation:bp-light-dapple 29s ease-in-out -13s infinite alternate}
+@keyframes bp-light-gap-a{from{transform:rotate(-.6deg) scaleX(.97)}to{transform:rotate(.8deg) scaleX(1.025)}}
+@keyframes bp-light-gap-b{from{transform:translate(2px,-1px) rotate(.7deg) scaleX(1.025)}to{transform:translate(-3px,2px) rotate(-.5deg) scaleX(.975)}}
+@keyframes bp-light-gap-c{from{transform:rotate(-.4deg) scaleX(1.015)}to{transform:rotate(.65deg) scaleX(.965)}}
+@keyframes bp-light-dapple{from{transform:translate(-2px,1px) scale(1)}to{transform:translate(4px,-3px) scale(1.035)}}
+@media(max-width:720px){#bettina-portfolio .bp-canopy-light{width:92vw;height:370px;opacity:.45}#bettina-portfolio .bp-canopy-light>span:nth-child(3),#bettina-portfolio .bp-canopy-light::after{display:none}#bettina-portfolio .bp-canopy-light>span{animation:none}}
+@media(prefers-reduced-motion:reduce){#bettina-portfolio .bp-canopy-light>span,#bettina-portfolio .bp-canopy-light::after{animation:none}}
+#bettina-portfolio.bp-paused .bp-canopy-light>span,#bettina-portfolio.bp-paused .bp-canopy-light::after{animation-play-state:paused}
+#bettina-portfolio .bp-reference-corner{animation:none!important;transform:none!important;filter:url(#bp-local-foliage);will-change:auto}
 /* The original bird remains intact; no duplicate head/wing can detach. */
 #bettina-portfolio .bp-bird-feathers{display:none!important;animation:none!important}
 #bettina-portfolio .bp-bird-look{display:none!important;animation:none!important}
 @media(prefers-reduced-motion:reduce){#bettina-portfolio .bp-reference-corner{filter:none!important}}
 #bettina-portfolio.bp-paused .bp-reference-corner{filter:none!important}
 </style>
-<svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none"><defs><filter id="bp-local-foliage" x="-1%" y="-1%" width="102%" height="102%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".009 .014" numOctaves="1" seed="13" result="air"><animate attributeName="baseFrequency" values=".009 .014;.012 .018;.010 .015;.009 .014" dur="13s" repeatCount="indefinite"/></feTurbulence><feImage href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjEwMDAiIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiPjxkZWZzPjxyYWRpYWxHcmFkaWVudCBpZD0ibSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSJ3aGl0ZSIvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IndoaXRlIiBzdG9wLW9wYWNpdHk9Ii44NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSIzNiIgY3k9IjIyNSIgcng9IjM1IiByeT0iNDMiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iODUiIGN5PSIzMDIiIHJ4PSIzMiIgcnk9IjQ5IiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjE4OSIgY3k9IjI1MiIgcng9IjMxIiByeT0iNDYiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iMjYxIiBjeT0iMzE5IiByeD0iMjkiIHJ5PSI0OCIgZmlsbD0idXJsKCNtKSIvPjxlbGxpcHNlIGN4PSIyOTUiIGN5PSIzOTQiIHJ4PSIyNyIgcnk9IjQ5IiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjI0MCIgY3k9IjExNCIgcng9IjM4IiByeT0iMjUiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iMTgxIiBjeT0iNDciIHJ4PSIyOSIgcnk9IjMzIiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjYyIiBjeT0iNjciIHJ4PSIyNiIgcnk9IjI4IiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjkxNCIgY3k9Ijc5NiIgcng9IjQzIiByeT0iMzkiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iODcwIiBjeT0iNzI1IiByeD0iMjgiIHJ5PSI0NSIgZmlsbD0idXJsKCNtKSIvPjxlbGxpcHNlIGN4PSI5MzYiIGN5PSI5MDEiIHJ4PSIzMSIgcnk9IjQ3IiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjgyMyIgY3k9IjgzMCIgcng9IjMxIiByeT0iMzEiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iOTc2IiBjeT0iNzAyIiByeD0iMjUiIHJ5PSIzNCIgZmlsbD0idXJsKCNtKSIvPjwvc3ZnPg==" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="leafMask"/><feComposite in="air" in2="leafMask" operator="in" result="localAir"/><feFlood flood-color="rgb(128,128,128)" result="still"/><feMerge result="motion"><feMergeNode in="still"/><feMergeNode in="localAir"/></feMerge><feDisplacementMap in="SourceGraphic" in2="motion" scale="6" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none"><defs><filter id="bp-local-foliage" x="-1%" y="-1%" width="102%" height="102%" color-interpolation-filters="sRGB"><feConvolveMatrix in="SourceGraphic" order="3" kernelMatrix="0 -.12 0 -.12 1.48 -.12 0 -.12 0" preserveAlpha="true" edgeMode="duplicate" result="crisp"/><feTurbulence type="fractalNoise" baseFrequency=".012 .018" numOctaves="1" seed="13" result="air"/><feImage href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjEwMDAiIHZpZXdCb3g9IjAgMCAxMDAwIDEwMDAiPjxkZWZzPjxyYWRpYWxHcmFkaWVudCBpZD0ibSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSJ3aGl0ZSIvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IndoaXRlIiBzdG9wLW9wYWNpdHk9Ii44NSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0id2hpdGUiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxlbGxpcHNlIGN4PSIzNiIgY3k9IjIyNSIgcng9IjM1IiByeT0iNDMiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iODUiIGN5PSIzMDIiIHJ4PSIzMiIgcnk9IjQ5IiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjE4OSIgY3k9IjI1MiIgcng9IjMxIiByeT0iNDYiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iMjYxIiBjeT0iMzE5IiByeD0iMjkiIHJ5PSI0OCIgZmlsbD0idXJsKCNtKSIvPjxlbGxpcHNlIGN4PSIyOTUiIGN5PSIzOTQiIHJ4PSIyNyIgcnk9IjQ5IiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjI0MCIgY3k9IjExNCIgcng9IjM4IiByeT0iMjUiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iMTgxIiBjeT0iNDciIHJ4PSIyOSIgcnk9IjMzIiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjYyIiBjeT0iNjciIHJ4PSIyNiIgcnk9IjI4IiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjkxNCIgY3k9Ijc5NiIgcng9IjQzIiByeT0iMzkiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iODcwIiBjeT0iNzI1IiByeD0iMjgiIHJ5PSI0NSIgZmlsbD0idXJsKCNtKSIvPjxlbGxpcHNlIGN4PSI5MzYiIGN5PSI5MDEiIHJ4PSIzMSIgcnk9IjQ3IiBmaWxsPSJ1cmwoI20pIi8+PGVsbGlwc2UgY3g9IjgyMyIgY3k9IjgzMCIgcng9IjMxIiByeT0iMzEiIGZpbGw9InVybCgjbSkiLz48ZWxsaXBzZSBjeD0iOTc2IiBjeT0iNzAyIiByeD0iMjUiIHJ5PSIzNCIgZmlsbD0idXJsKCNtKSIvPjwvc3ZnPg==" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="leafMask"/><feComposite in="air" in2="leafMask" operator="in" result="localAir"/><feFlood flood-color="rgb(128,128,128)" result="still"/><feMerge result="motion"><feMergeNode in="still"/><feMergeNode in="localAir"/></feMerge><feDisplacementMap in="crisp" in2="motion" scale="1.8" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>
 
 <script>
 (()=>{
@@ -960,15 +973,15 @@ structure();desktop.addEventListener('change',structure);})();
   const origin=right?random(.84,.98):(Math.random()<.82?random(.015,.22):random(.22,.75));
   return {x:width*origin,y:small?random(20,70):random(45,Math.min(210,height*.2)),age,life,depth,far,
    speed:random(small?9:12,small?17:23)*depth,drift:(right?random(-3,1):random(-2,5))*depth,phase:random(0,Math.PI*2),frequency:random(.22,.48),
-   angle:random(-Math.PI,Math.PI),spin:random(-.12,.12),flutter:random(.45,.9),size:random(small?6:8,small?13:18)*depth,
-   breadth:random(.65,.95),opacity:far?random(.30,.44):random(.52,.75),colour:palette[Math.floor(Math.random()*palette.length)]};
+   angle:random(-Math.PI,Math.PI),spin:random(-.12,.12),flutter:random(.45,.9),size:random(small?6:8,small?13:18)*depth*(!small&&!far?1.2:1),
+   breadth:random(.65,.95),opacity:far?random(.35,.48):random(.62,.82),colour:palette[Math.floor(Math.random()*palette.length)]};
  }
  function resize(){
   const r=garden.getBoundingClientRect(),w=Math.round(r.width),h=Math.round(r.height);
   if(w===width&&h===height)return;
   width=w;height=h;const dpr=Math.min(devicePixelRatio||1,2);
   canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx?.setTransform(dpr,0,0,dpr,0,0);
-  petals=Array.from({length:mobile.matches?8:16},(_,i)=>{const p=seed(true,!mobile.matches&&i%4===3);p.y+=p.age*p.speed;p.x+=p.age*p.drift;return p;});
+  petals=Array.from({length:mobile.matches?10:20},(_,i)=>{const p=seed(true,!mobile.matches&&i%4===3);p.y+=p.age*p.speed;p.x+=p.age*p.drift;return p;});
  }
  function frame(now){
   const dt=Math.min((now-last)/1000||0,.04);last=now;windTime+=dt;
@@ -976,9 +989,9 @@ structure();desktop.addEventListener('change',structure);})();
   for(let i=0;i<petals.length;i++){
    let p=petals[i];p.age+=dt;if(p.age<0)continue;
    if(p.age>p.life||p.y>height+18||p.x< -30||p.x>width+30){petals[i]=seed(false,!mobile.matches&&i%4===3);continue;}
-   const t=p.age,wind=2.5*Math.sin(windTime*.17)+1.5*Math.sin(windTime*.31);
+   const t=p.age,wind=3.2*Math.sin(windTime*.17)+1.7*Math.sin(windTime*.31);
    p.x+=(p.drift+(wind+9*Math.sin(t*p.frequency+p.phase))*p.depth)*dt;
-   p.y+=p.speed*(1+.12*Math.sin(t*.65+p.phase))*dt;
+   p.y+=p.speed*(1+.16*Math.sin(t*.65+p.phase))*dt;
    const fade=Math.min(1,t/2.5,(p.life-t)/4,(height+12-p.y)/35);
    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle+p.spin*t+.38*Math.sin(t*.48+p.phase));
    ctx.scale(p.size*p.breadth*(.28+.72*Math.abs(Math.cos(t*p.flutter+p.phase))),p.size);
@@ -997,7 +1010,7 @@ structure();desktop.addEventListener('change',structure);})();
  document.addEventListener('visibilitychange',start);start();
  // Local deformation stays confined to leaf/petal masks; the bird and branches stay still.
  const displacement=document.querySelector('#bp-local-foliage feDisplacementMap');
- if(displacement){const pulse=document.createElementNS('http://www.w3.org/2000/svg','animate');pulse.setAttribute('attributeName','scale');pulse.setAttribute('values','4;7;5;6;4');pulse.setAttribute('dur','11s');pulse.setAttribute('repeatCount','indefinite');pulse.setAttribute('calcMode','spline');pulse.setAttribute('keySplines','.42 0 .58 1;.42 0 .58 1;.42 0 .58 1;.42 0 .58 1');displacement.append(pulse);}
+ if(displacement){const pulse=document.createElementNS('http://www.w3.org/2000/svg','animate');pulse.setAttribute('attributeName','scale');pulse.setAttribute('values',mobile.matches?'.6;1.5;.8;1.2;.6':'1.2;3.4;1.8;2.6;1.2');pulse.setAttribute('dur','19s');pulse.setAttribute('repeatCount','indefinite');pulse.setAttribute('calcMode','spline');pulse.setAttribute('keySplines','.42 0 .58 1;.42 0 .58 1;.42 0 .58 1;.42 0 .58 1');displacement.append(pulse);}
 })();
 </script>
 
